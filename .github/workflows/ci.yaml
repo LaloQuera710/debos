@@ -21,16 +21,16 @@ jobs:
       fail-fast: false
       matrix:
         variant:
-          - debos-arch
-          - debos-bookworm
-          - debos-bullseye
-          - debos-trixie
+          - arch
+          - bookworm
+          - bullseye
+          - trixie
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
     container:
-      image: ghcr.io/go-debos/test-containers/${{matrix.variant}}:main
+      image: ghcr.io/go-debos/test-containers/${{matrix.variant}}:wip-obbardc-separate-container
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
