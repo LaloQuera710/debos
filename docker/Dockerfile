@@ -3,7 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG GOPATH=/usr/local/go
 
 ### first stage - builder ###
-FROM debian:bookworm-slim as builder
+FROM debian:12.5-slim as builder
 
 ARG DEBIAN_FRONTEND
 ARG GOPATH
@@ -45,7 +45,7 @@ RUN git clone https://gitlab.archlinux.org/archlinux/archlinux-keyring && \
     make PREFIX=/usr KEYRING_TARGET_DIR=/usr/share/keyrings/ DESTDIR=/arch-keyring install
 
 ### second stage - runner ###
-FROM debian:bookworm-slim as runner
+FROM debian:12.5-slim as runner
 
 ARG DEBIAN_FRONTEND
 ARG GOPATH
